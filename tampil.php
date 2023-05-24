@@ -37,17 +37,3 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
-<!-- <script>
-    function updateStatus(id, checked) {
-        var status = checked ? 0 : 1;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // Response handling, if needed
-            }
-        };
-        xhttp.open("GET", "update.php?id=" + id + "&status=" + status, true);
-        xhttp.send();
-    }
-</script> -->

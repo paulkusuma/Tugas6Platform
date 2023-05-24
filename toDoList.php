@@ -1,4 +1,7 @@
 <?php
+session_start();
+// print_r($_SESSION);
+// print_r($_COOKIE);
 include 'connect_mysql.php';
 if (isset($_POST['add'])) {
   $task = $_POST['task'];
@@ -74,6 +77,17 @@ if (isset($_POST['add'])) {
 
               <hr class="my-4">
               <?php include 'tampil.php'; ?>
+
+              <div class="pb-2" style="display: flex; justify-content: flex-end; padding-top: 2em;">
+                <div class="d-flex flex-row align-items-center">
+                  <form action="logOut.php" method="POST">
+                    <div>
+                      <button type="submit" class="btn btn-primary">LogOut</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
