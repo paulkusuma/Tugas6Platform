@@ -10,10 +10,12 @@ if (isset($_POST['submit'])) {
   $sql = "SELECT * FROM tb_login WHERE username = '$username' AND password = '$password'";
   $result = mysqli_query($conn, $sql);
 
+  $id = mysqli_fetch_assoc($result)['id'];
   // Periksa jumlah baris yang terpengaruh
   if (mysqli_num_rows($result) > 0) {
     // Jika data login ditemukan, set session dan cookie
     $_SESSION['username'] = $username;
+    $_SESSION['id'] = $id;
 
     // Set cookie dengan masa berlaku 1 jam
     $cookie_name = "login_cookie";
@@ -64,6 +66,7 @@ if (isset($_POST['submit'])) {
           <img src="" class="img-fluid" alt="Sample image" />
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <!--  -->
           <form method="POST" action="">
             <!-- Username input -->
             <div class="form-outline mb-4">
@@ -110,33 +113,3 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
-
-<!-- if ($username == '' or $password == '') {
-    echo '<li>Silahkan Masukan Password</li>';
-  } else {
-    $sql1 = "SELECT * FROM tb_login WHERE username ='$username'";
-    $q1 = mysqli_query($conn, $sql1);
-    $r1 = mysqli_fetch_array($q1);
-    if ($r1['username'] == '') {
-      echo '<li>Username $username tidak tersedia</li>';
-    } elseif ($r1['password'] != password_hash($password, PASSWORD_DEFAULT)) {
-      echo 'Password tidak sesuai';
-    }
-
-    $_SESSION['session_username'] = $username;
-    $_SESSION['session_password'] = password_hash($password, PASSWORD_DEFAULT);
-    if ($remember == 1) {
-      $cookie_name = "cookie_username";
-      $cookie_value = $username;
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-
-      $cookie_name = "cookie_password";
-      $cookie_value = password_hash($password, PASSWORD_DEFAULT);
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-    }
-    header('Location:toDoList.php');
-    exit();
-
-  }
-} -->

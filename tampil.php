@@ -1,7 +1,10 @@
 <?php
-require './connect_mysql.php';
 
-$sql = "SELECT `id`, `task`, `status` FROM `tb_todolist`";
+require './connect_mysql.php';
+$id_login = $_SESSION['id'];
+// WHERE 'id_login=$id_login'
+
+$sql = "SELECT `id`, 'id_login', `task`, `status` FROM `tb_todolist` WHERE id_login=$id_login";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

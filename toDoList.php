@@ -6,6 +6,8 @@ include 'connect_mysql.php';
 if (isset($_POST['add'])) {
   $task = $_POST['task'];
 }
+
+// var_dump($_SESSION['id']);
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +69,7 @@ if (isset($_POST['add'])) {
                         <input type="text" name="list" class="form-control form-control-lg"
                           id="exampleFormControlInput1" placeholder="Add new task...">
                         <div>
-                          <button type="submit" class="btn btn-primary">Add</button>
+                          <button type="submit" name="submitAdd" class="btn btn-primary">Add</button>
                         </div>
                       </div>
                     </form>

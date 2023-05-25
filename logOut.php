@@ -3,7 +3,9 @@
 session_start();
 
 // Hapus session 'username'
+unset($_SESSION['id']);
 unset($_SESSION['username']);
+unset($_SESSION['password']);
 
 // Periksa dan hapus cookie 'login_cookie'
 if (isset($_COOKIE['login_cookie'])) {
